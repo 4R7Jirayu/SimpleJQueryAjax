@@ -1,15 +1,16 @@
-<div class="page-header"› 
+
 <?php include "connectdb.php"; ?> 
 <html> 
     <?php include "head.php"; ?>
     <body> 
         <div class="container"> 
             <div class="row"> 
-                <div class="col-md-6 col-md-offset-3"> 
-                    <h3>untaul3n</h3> 
-                </div> 
-                <a href="index.php">milluln</a> 
-                <?php 
+            <div class="col-md-6 col-md-offset-3">
+            <div class="page-header">
+            <h3>แก้ไขสมาชิก</h3>
+            </div>
+            <a href="index.php">หน้าแรก</a>
+            <?php
                     $sql = mysqli_query($conn,"select * from student where std_id=".$_GET['std_id'].""); 
                     while($row = mysqli_fetch_array($sql)){
                          $fname = $row['std_fname']; 
@@ -19,68 +20,67 @@
                         } 
                     if($_GET['std_id'] != ''){
                     ?>
-                <form class="form-horizontal"> 
-                    <div class="form-group"> 
-                    <label class="col-sm-3 control-label">First Name</label> 
-                    <div class="col-sm-8"> 
-                    <input type="hidden" class="form-control" id="std_id" value="<?php echo $std_id;?>" required> 
-                    <input type="text" class="form-control" id="firstname" value="<?php echo $fname;?>" required> 
-                    <span id="error_f"></span> 
-                </div> 
-            </div> 
-            <div class="form-group"> 
-            <label class="col-sm-3 control-label">Last Name</tabel> 
-            <div class="col-sm-8"> 
-                <input type="text" class="form-control" id="lastname" value="<?php echo $lname;?>" required> 
-            </div> 
-        </div> 
-        <div class="form-group"> 
-        <label class="col-sm-3 control-label">Student ID</label> 
-        <div class="col-sm-8"> 
-            <input type="text" class="form-control" id="std_id" value=" <?php echo $std_id;?>" maxlength="11" required> 
-        </div> 
-    </div> 
-    <div class="form—group"> 
-        <label class="col—sm-3 control—label">Faculty</label> 
-        <div class="col—sm-8"> 
-            <select class="form—control" id="faculty"> 
-            <?php        
-              $sql_faculty = mysqli_query($conn,"select * from faculty INNER JOIN major on faculty.faculty_id=major.faculty_id GROUP BY faculty_name"); 
-                while($faculty = mysqli_fetch_array($sql_faculty)){ 
-                    if($faculty['faculty_id'] == $major_id){ 
-                        $selected = "selected"; 
-                    }
-                    else{ 
-                        $selected = ""; 
-                    }
-                    echo "<option value".$faculty['faculty_id']." ".$selected.">".$faculty['faculty_name']."</option>";
-                }
-            ?>
-            </select>
-            </div>
-            </div>
-            <div class="form-group">
-                <label class"col-sm-3 control-label">Major</label>
+                    <form class="form-horizontal">
+                <div class="form-group">
+                <label class="col-sm-3 control-label">First Name</label>
                 <div class="col-sm-8">
-                <select class="form-control" id="major">
-                <?php
-                    $sql_major = mysqli_query($conn,"SELECT * FROM major");
+                 <input type="hidden" class="form-control" id="st_id" value="<?php echo $st_id;?>" required>
+                 <input type="text" class="form-control" id="firstname" value="<?php echo $fname;?>" required>
+                 <span id="error_f"><span>
+                </div>
+               </div>
+               <div class="form-group">
+                <label class="col-sm-3 control-label">Last Name</label>
+                <div class="col-sm-8">
+                 <input type="text" class="form-control" id="lastname" value="<?php echo $lname;?>" required>
+                </div>
+               </div>
+               <div class="form-group">
+                <label class="col-sm-3 control-label">Student ID</label>
+                <div class="col-sm-8">
+                 <input type="text" class="form-control" id="std_id" value="<?php echo $std_id;?>" maxlength="11" required>
+                </div>
+               </div>
+               <!-- $sql_faculty = mysqli_query($conn,"select * from faculty LEFT JOIN  major on faculty.faculty_id=major.faculty_id GROUP BY faculty_name"); 
+              -->
+              <div class="form-group">
+              <label class="col-sm-3 control-label">Faculty</label>
+              <div class="col-sm-8">
+                <select class="form-control" id="faculty">
+                 <?php
+                  $sql_faculty = mysqli_query($conn,"select * from faculty INNER JOIN major on faculty.faculty_id=major.faculty_id GROUP BY faculty_name");
+                  while($faculty = mysqli_fetch_array($sql_faculty)){
+                      if($faculty['faculty_id'] == $major_id){
+                          $selected = "selected";
+                      }else{
+                          $selected = "";
+                      }
+                      echo "<option value=".$faculty['faculty_id']." ".$selected.">".$faculty['faculty_name']."</option>";
+                  }
+                  ?>
+                 </select>
+                 </div>
+                 </div>
+                 <div class="form-group">
+                 <label class="col-sm-3 control-label">Major</label>
+                 <div class="col-sm-8">
+                    <select class="form-control" id="major">
+                    <?php
+                    $sql_major = mysqli_query($conn,"select * from major");
                     while($major = mysqli_fetch_array($sql_major)){
-                        if($major['major_id'] == $major_id){
-                            $selected = "selected";
-                        }
-                        else{
-                            $selected = "";
-                        }
-                        echo "<option value=".$major['major_id']." ".$selected.">".$major['major_name']."</option>";        
-                    }                          
-            
-            ?> 
-            </select> 
-        </div> 
-    </div> 
-    <div class="form-group"> 
-        <div class="col-sm-3 control-label"> 
+                     if($major['major_id'] == $major_id){
+                         $selected = "selected";
+                     }else{
+                         $selected = "";
+                     }
+                     echo "<option value=".$major['major_id']." ".$selected.">".$major['major_name']."</option>";
+                    }
+                    ?>
+                </select>
+                </div>
+                </div>
+                <div class="form-group">
+                <div class="col-sm-3">
     <button type="submit" class="btn btn-default">Save</button> 
 </div> 
     </div> 
@@ -92,6 +92,15 @@
 
 <script type="text/javascript"> 
     $(document).ready(function(){ 
+        
+			$('#faculty').change(function(){
+			var txt_f = $(this).val();
+			var url = "major.php";
+			var datas = {id : txt_f};
+			$.post(url,datas,function(data){
+			$("#major").html(data);
+		});
+	});
         $("button").click(function(){
             var TxtFname = $('#firstname').val(); 
             var TxtLname = $('#lastname').val(); 

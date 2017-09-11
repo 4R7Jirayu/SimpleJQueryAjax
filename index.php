@@ -28,10 +28,20 @@
         echo "<td>".$row['std_id']."</td>"; 
         echo "<td>".$row['faculty_name']."</td>"; 
         echo "<td>".$row['major_name']."</td>"; 
-        echo "<td> <a href='edit_student.php?std_id=".$row['std_id']."'> <span class='glyphicon glyphicon—pencil' aria—hidden='true'></span> แก้ไข</a> ";
-        echo "<a href='del_student.php?std_id=".$row['std_id']." onclick='return confirm(\"ลบข้อมูลนี้ ?\");'> <span class='glyphicon glyphicon—trash' aria-hidden='true'>ลบ</span> </a> </td>";              
-        echo "</tr>"; 
-        $n++; 
+       // echo "<td> <a href='edit_student.php?std_id=".$row['std_id']."'> <span class='glyphicon glyphicon—pencil' aria—hidden='true'></span> แก้ไข</a> ";
+        //echo "<a href='del_student.php?std_id=".$row['std_id']." onclick='return confirm(\"ลบข้อมูลนี้ ?\");'> <span class='glyphicon glyphicon-trash' aria-hidden='true'>ลบ</span> </a> </td>";              
+       // echo "</tr>"; 
+       echo "<td>
+       <a href='edit_student.php?std_id=".$row['std_id']."'>
+       <span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>
+       </a>
+       <a href='del_student.php?std_id=".$row['std_id']."' onclick='return confirm(\"คุณต้องการลบข้อมูลนี้ ?\");'>
+       <span class='glyphicon glyphicon-trash' aria-hidden='true'></span>
+       </a>
+       </td>";
+   echo "</tr>";
+    
+       $n++; 
     } 
     ?>
 </table> 
