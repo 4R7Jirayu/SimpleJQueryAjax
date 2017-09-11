@@ -44,46 +44,60 @@
         <label class="col—sm-3 control—label">Faculty</label> 
         <div class="col—sm-8"> 
             <select class="form—control" id="faculty"> 
-            <?php  
-
-            $fc = mysqli_query($conn ,"select * from faculty"); 
-            while($row = mysqli_fetch_array($fc)){ 
-                echo "<option value=".$row['faculty_id'].">".$row['faculty_name']."</option>";
-            }
-            
-            /*    $sql_faculty = mysqli_query($conn,"select * from faculty "); 
-                while($faculty = mysqli_fetch_array(Ssql_faculty)){ 
+            <?php        
+              $sql_faculty = mysqli_query($conn,"select * from faculty INNER JOIN major on faculty.faculty_id=major.faculty_id GROUP BY faculty_name"); 
+                while($faculty = mysqli_fetch_array($sql_faculty)){ 
                     if($faculty['faculty_id'] == $major_id){ 
                         $selected = "selected"; 
                     }
                     else{ 
                         $selected = ""; 
                     }
-                    echo "<option value=".$major['major_id']." ".$selected.">".$major['major_name']."</option>";
-                 }     */            
-             //INNER JOIN major on faculty.faculty_id=major.faculty_id GROUP BY faculty_name
+                    echo "<option value".$faculty['faculty_id']." ".$selected.">".$faculty['faculty_name']."</option>";
+                }
+            ?>
+            </select>
+            </div>
+            </div>
+            <div class="form-group">
+                <label class"col-sm-3 control-label">Major</label>
+                <div class="col-sm-8">
+                <select class="form-control" id="major">
+                <?php
+                    $sql_major = mysqli_query($conn,"SELECT * FROM major");
+                    while($major = mysqli_fetch_array($sql_major)){
+                        if($major['major_id'] == $major_id){
+                            $selected = "selected";
+                        }
+                        else{
+                            $selected = "";
+                        }
+                        echo "<option value=".$major['major_id']." ".$selected.">".$major['major_name']."</option>";        
+                    }                          
+            
             ?> 
             </select> 
         </div> 
     </div> 
-    <div class="form—group"> 
-        <div class="col—sm-3">
-            <button type="submit" class="btn btn—default">Save</button> 
-        </div> 
+    <div class="form-group"> 
+        <div class="col-sm-3 control-label"> 
+    <button type="submit" class="btn btn-default">Save</button> 
+</div> 
     </div> 
     </form> 
          <?php }else{header('Location: index.php');} ?>
     </div> 
 </div> 
 </div> 
-<script> 
+
+<script type="text/javascript"> 
     $(document).ready(function(){ 
-        $('.btn').on('click',function(){ 
+        $("button").click(function(){
             var TxtFname = $('#firstname').val(); 
             var TxtLname = $('#lastname').val(); 
-            var TxtStd = $('#std_id').val(); 
-            var TxtMjor = $('#major').val(); 
-            if(std_id =''){
+            var TxtStdId = $('#std_id').val(); 
+            var TxtMajor = $('#major').val(); 
+            if(TxtStdId !=''){
                 $.ajax({
                     type: "POST",
                     url: "edit_student2.php",
@@ -95,16 +109,17 @@
                     },
                     success: function(data){
                         alert( data );
-                        top.location.href = "index.php"
+                        top.location.href = "index.php";
                     }
                 });
                 return false;
             }else{
-                alert("กรุณากรอกข้อมูล")ว
+                alert("กรุณากรอกข้อมูล");
                 return false;
             }
         });
     });
-</script>         
+</script>  
+       
 </body>
 </html>         

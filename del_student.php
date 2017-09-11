@@ -15,10 +15,10 @@ include "head.php";
 		
 		if($sql){
 			echo "ลบข้อมูลสำเร็จ<br>";
-			echo "<a href='main.php'>กลับ</a>";
+			echo "<a href='index.php'>กลับ</a>";
 			}else{
 			echo "ไม่สามารถลบข้อมูลได้[".' '.$query_sql.' '."]";
-			echo"<a href='main.php'>กลับ</a>";
+			echo"<a href='index.php'>กลับ</a>";
 			}
 		}
 ?>

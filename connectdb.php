@@ -1,11 +1,9 @@
 ﻿<?php
-	session_start();
-	
+	//session_start();	
 	$server ="localhost";
 	$user ="root";
 	$password ="";
-	$db_name ="datalabwebtech";
-	
+	$db_name ="datalabwebtech";	
 	//connect database
 	$conn=mysqli_connect($server,$user,$password) or die("ไม่สามารถเชื่อมต่อฐานข้อมูลได้");
 	//connect table
