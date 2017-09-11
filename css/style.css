@@ -1,0 +1,86 @@
+.margin-50 {
+    margin: 50px 0px;
+}
+
+.margin-100 {
+    margin: 100px 0px;
+}
+
+body {
+    overflow: hidden;
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 100%;
+    background: url("../img/bg.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.txt-title {
+    font-weight: 700;
+}
+
+.txt-brand {
+    color: #5BA4FF;
+    letter-spacing: 2px;
+}
+
+.txt-brand-s {
+    color: #4BFF16;
+    font-weight: 600;
+}
+
+.btn {
+    background-color: #9F9F9C;
+    color: #fff;
+    font-weight: blod;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: none;
+    text-transform: uppercase;
+    line-height: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: #FFC000;
+}
+
+ul.socials {
+    list-style-type: none;
+    display: block;
+    padding-left: 0px;
+    text-align: left;
+}
+
+ul.socials li {
+    display: inline-block;
+    margin-bottom: 8px;
+    margin-right: 3px;
+}
+
+ul.socials li a {
+    font-size: 14px;
+    width: 43px;
+    height: 43px;
+    line-height: 48px;
+    background-color: #333333;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+ul.socials li a:hover {
+    background-color: #5BA4FF;
+}
+
+ul.socials li .fa {
+    line-height: 43px;
+}
