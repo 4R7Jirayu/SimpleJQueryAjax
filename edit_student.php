@@ -17,6 +17,11 @@
                          $lname = $row['std_lname'];                          
                          $std_id = $row['std_id']; 
                          $major_id = $row['major_id']; 
+                         $std_birthday =$row['std_birthday'];
+                         $std_tel = $row['std_tel'];
+                         $std_address = $row['std_address'];
+                         $std_age = $row['std_age'];
+                         $std_nick = $row['std_nick'];
                         } 
                     if($_GET['std_id'] != ''){
                     ?>
@@ -38,11 +43,15 @@
                <div class="form-group">
                 <label class="col-sm-3 control-label">Student ID</label>
                 <div class="col-sm-8">
-                 <input type="text" class="form-control" id="std_id" value="<?php echo $std_id;?>" maxlength="11" required>
+                 <input type="text" class="form-control" id="std_id" value="<?php echo $std_id;?>" maxlength="10" required>
                 </div>
                </div>
-               <!-- $sql_faculty = mysqli_query($conn,"select * from faculty LEFT JOIN  major on faculty.faculty_id=major.faculty_id GROUP BY faculty_name"); 
-              -->
+               <div class="form-group">
+      <label class="col-sm-3 control-label">Nick Name</label>
+      <div class="col-sm-8">
+       <input type="text" class="form-control" id="nickname" value="<?php echo $std_nick;?>" required>
+      </div>
+     </div>              
               <div class="form-group">
               <label class="col-sm-3 control-label">Faculty</label>
               <div class="col-sm-8">
@@ -80,6 +89,30 @@
                 </div>
                 </div>
                 <div class="form-group">
+      <label class="col-sm-3 control-label">Tel</label>
+      <div class="col-sm-8">
+       <input type="text" class="form-control" id="tel" value="<?php echo $std_tel;?>" required>
+      </div>
+     </div>
+     <div class="form-group">
+      <label class="col-sm-3 control-label">BirthDay</label>
+      <div class="col-sm-8">
+       <input type="date" class="form-control" id="birthday" value="<?php echo $std_birthday;?>" required>
+      </div>
+     </div>
+     <div class="form-group">
+      <label class="col-sm-3 control-label">Age</label>
+      <div class="col-sm-8">
+       <input type="text" class="form-control" id="age" value="<?php echo $std_age;?>" required>
+      </div>
+     </div>
+     <div class="form-group">
+      <label class="col-sm-3 control-label">Address</label>
+      <div class="col-sm-8">
+       <input type="text" class="form-control" id="address" value="<?php echo $std_address;?>" required>
+      </div>
+     </div>
+                <div class="form-group">
                 <div class="col-sm-3">
     <button type="submit" class="btn btn-default">Save</button> 
 </div> 
@@ -106,6 +139,11 @@
             var TxtLname = $('#lastname').val(); 
             var TxtStdId = $('#std_id').val(); 
             var TxtMajor = $('#major').val(); 
+            var TxtBirthday =$('#birthday').val();
+            var TxtTel = $('#tel').val();
+            var TxtAddress = $('#address').val();
+            var TxtAge = $('#age').val();
+            var TxtNname = $('#nickname').val();
             if(TxtStdId !=''){
                 $.ajax({
                     type: "POST",
@@ -114,7 +152,12 @@
                         'TxtFname': TxtFname, 
                         'TxtLname': TxtLname, 
                         'TxtStdId': TxtStdId, 
-                        'TxtMajor': TxtMajor 
+                        'TxtMajor': TxtMajor,
+                        'TxtBirthday': TxtBirthday,
+                        'TxtTel':TxtTel,
+                        'TxtAddress':TxtAddress,
+                        'TxtAge':TxtAge,
+                        'TxtNname':TxtNname
                     },
                     success: function(data){
                         alert( data );

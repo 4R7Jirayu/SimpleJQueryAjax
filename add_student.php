@@ -28,7 +28,7 @@
      <div class="form-group">
       <label class="col-sm-3 control-label">Nick Name</label>
       <div class="col-sm-8">
-       <input type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+       <input type="text" class="form-control" id="nickname" placeholder="Nick Name" required>
       </div>
      </div>
      <div class="form-group">
@@ -62,28 +62,27 @@
      <div class="form-group">
       <label class="col-sm-3 control-label">Tel</label>
       <div class="col-sm-8">
-       <input type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+       <input type="text" class="form-control" id="tel" placeholder="Tel" required>
       </div>
      </div>
      <div class="form-group">
       <label class="col-sm-3 control-label">BirthDay</label>
       <div class="col-sm-8">
-       <input type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+       <input type="date" class="form-control" id="birthday" placeholder="BirthDay" required>
       </div>
      </div>
      <div class="form-group">
       <label class="col-sm-3 control-label">Age</label>
       <div class="col-sm-8">
-       <input type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+       <input type="text" class="form-control" id="age" placeholder="Age" required>
       </div>
      </div>
      <div class="form-group">
       <label class="col-sm-3 control-label">Address</label>
       <div class="col-sm-8">
-       <input type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+       <input type="text" class="form-control" id="address" placeholder="Address" required>
       </div>
      </div>
-
     
      <div class="form-group">
       <div class="col-sm-3 control-label">
@@ -119,6 +118,11 @@
         var TxtStdId = $("#student_id").val(); 
         var TxtFaculty = $("#faculty").val(); 
         var TxtMajor = $("#major").val(); 
+        var TxtBirthday =$('#birthday').val();
+        var TxtTel = $('#tel').val();
+        var TxtAddress = $('#address').val();
+        var TxtAge = $('#age').val();
+        var TxtNname = $('#nickname').val();
         if(TxtFname !="" && TxtFaculty !="0"){ 
             $.ajax({ 
                 type: 'POST', 
@@ -127,7 +131,12 @@
                     'TxtFname': TxtFname, 
                     'TxtLname': TxtLname, 
                     'TxtStdId': TxtStdId, 
-                    'TxtMajor': TxtMajor 
+                    'TxtMajor': TxtMajor,
+                    'TxtBirthday': TxtBirthday,
+                    'TxtTel':TxtTel,
+                    'TxtAddress':TxtAddress,
+                    'TxtAge':TxtAge,
+                    'TxtNname':TxtNname
                     }, 
                 dataType : 'html', 
                 success: function(data){ 
